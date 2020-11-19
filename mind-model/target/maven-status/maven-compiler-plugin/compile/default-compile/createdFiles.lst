@@ -1,0 +1,6 @@
+com\mind\model\sys\SysUserRecordModel.class
+com\mind\model\sys\SysLogRecordModel.class
+com\mind\model\sys\SysRoleMenuModel.class
+com\mind\model\sys\SysRoleRecordModel.class
+com\mind\model\sys\SysUserRoleModel.class
+com\mind\model\sys\SysMenuRecordModel.class
