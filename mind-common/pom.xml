@@ -13,5 +13,11 @@
     <groupId>com.mind.common</groupId>
     <artifactId>mind-common</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+        </dependency>
+    </dependencies>
 
 </project>

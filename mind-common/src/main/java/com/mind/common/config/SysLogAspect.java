@@ -1,6 +1,7 @@
-package com.mind.common.annotation;
+package com.mind.common.config;
 
 import com.alibaba.fastjson.JSON;
+import com.mind.common.annotation.SysLog;
 import com.mind.common.utils.MapUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;

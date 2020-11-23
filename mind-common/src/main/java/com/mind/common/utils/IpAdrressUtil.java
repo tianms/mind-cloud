@@ -1,4 +1,4 @@
-package com.intelliquor.cloud.shop.common.utils;
+package com.mind.common.utils;
 
 
 import javax.servlet.http.HttpServletRequest;

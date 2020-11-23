@@ -1,10 +1,10 @@
-package com.intelliquor.cloud.shop.common.utils;
+package com.mind.common.utils;
 
 import java.util.Collection;
 import java.util.Map;
 
 /**
- * Created by liuyang on 17/9/14.
+ * object工具类
  */
 public class ObjectUtil {
 
