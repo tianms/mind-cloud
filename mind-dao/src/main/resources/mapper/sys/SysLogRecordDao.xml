@@ -72,7 +72,7 @@
 
     <!-- 更新 -->
     <update id="update">
-        update shop_melt_colonel_classify
+        update sys_log_record
         <set>
             <if test="userName != null"> user_name = #{userName}, </if>
             <if test="operation != null"> operation = #{operation}, </if>

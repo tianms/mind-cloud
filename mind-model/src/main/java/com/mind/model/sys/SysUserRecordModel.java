@@ -47,7 +47,12 @@ public class SysUserRecordModel implements Serializable {
 	 * 状态  0：禁用   1：正常
 	 */
 	private Integer status;
-	
+
+	/**
+	 * 是否删除，0：已删除，1：正常
+	 */
+	private Integer isDelete;
+
 	/**
 	 * 创建者ID
 	 */
@@ -57,5 +62,15 @@ public class SysUserRecordModel implements Serializable {
 	 * 创建时间
 	 */
 	private Date createTime;
+
+	/**
+	 * 更新时间
+	 */
+	private Date updateTime;
+
+	/**
+	 * 删除时间
+	 */
+	private Date delTime;
 
 }
