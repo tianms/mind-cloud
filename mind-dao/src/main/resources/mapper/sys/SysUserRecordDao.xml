@@ -80,7 +80,7 @@
             <if test="status != null"> #{status}, </if>
             <if test="isDelete != null"> #{isDelete}, </if>
             <if test="createUserId != null"> #{createUserId}, </if>
-            <if test="createTime != null"> #{createTime}, </if>
+            <if test="createTime != null"> now(), </if>
             <if test="updateTime != null"> #{updateTime}, </if>
             <if test="delTime != null"> #{delTime}, </if>
         </trim>
@@ -99,7 +99,7 @@
             <if test="isDelete != null"> is_delete = #{isDelete}, </if>
             <if test="createUserId != null"> create_user_id = #{createUserId}, </if>
             <if test="createTime != null"> create_time = #{createTime}, </if>
-            <if test="updateTime != null"> update_time = #{updateTime}, </if>
+            <if test="updateTime != null"> update_time = now(), </if>
             <if test="delTime != null"> del_time = #{delTime}, </if>
         </set>
         where id = #{id}
@@ -107,6 +107,6 @@
 
     <!--  更新状态为删除状态  -->
     <update id="deleteById" >
-        update sys_user_record set is_delete = #{isDelete} where id = #{id}
+        update sys_user_record set is_delete = #{isDelete}, delTime = now() where id = #{id}
     </update>
 </mapper>

@@ -40,13 +40,4 @@ public interface SysLogRecordDao {
      * @return java.lang.Integer
     */
     Integer insert(SysLogRecordModel sysLogRecordModel);
-
-    /**
-     * 功能描述: 更新
-     * @param sysLogRecordModel
-     * @auther: tms
-     * @date: 2020/11/19 09:53
-     * @return java.lang.Integer
-    */
-    Integer update(SysLogRecordModel sysLogRecordModel);
 }

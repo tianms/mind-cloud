@@ -7,6 +7,7 @@ import com.mind.service.sys.SysLogRecordService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -54,17 +55,5 @@ public class SysLogRecordServiceImpl implements SysLogRecordService {
     @Override
     public Integer insert(SysLogRecordModel sysLogRecordModel) {
         return sysLogRecordDao.insert(sysLogRecordModel);
-    }
-
-    /**
-     * 功能描述: 更新
-     * @param sysLogRecordModel
-     * @auther: tms
-     * @date: 2020/11/19 09:53
-     * @return java.lang.Integer
-     */
-    @Override
-    public Integer update(SysLogRecordModel sysLogRecordModel) {
-        return sysLogRecordDao.update(sysLogRecordModel);
     }
 }

@@ -66,23 +66,8 @@
             <if test="params != null"> #{params}, </if>
             <if test="runTime != null"> #{runTime}, </if>
             <if test="ip != null"> #{ip}, </if>
-            <if test="createTime != null"> #{createTime}, </if>
+            <if test="createTime != null"> now(), </if>
         </trim>
     </insert>
-
-    <!-- 更新 -->
-    <update id="update">
-        update sys_log_record
-        <set>
-            <if test="userName != null"> user_name = #{userName}, </if>
-            <if test="operation != null"> operation = #{operation}, </if>
-            <if test="method != null"> method = #{method}, </if>
-            <if test="params != null"> params = #{params}, </if>
-            <if test="runTime != null"> run_time = #{runTime}, </if>
-            <if test="ip != null"> ip = #{ip}, </if>
-            <if test="createTime != null"> create_time = #{createTime}, </if>
-        </set>
-        where id = #{id}
-    </update>
 
 </mapper>
