@@ -1,6 +1,9 @@
 package com.mind.common.annotation;
 
 import com.alibaba.fastjson.JSON;
+import com.mind.common.constatns.NumConstant;
+import com.mind.common.constatns.ReqMethodConstant;
+import com.mind.common.constatns.SymbolConstant;
 import com.mind.common.utils.MapUtils;
 import com.mind.common.utils.ObjectUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -30,7 +33,8 @@ public class LogAspect {
 
     // 标注使用哪个注解
     @Pointcut("@annotation(com.mind.common.annotation.Log)")
-    private void cut() { } // 切面方法
+    private void cut() {
+    } // 切面方法
 
     @Around("cut()")
     public Object cutMethod(ProceedingJoinPoint joinPoint) throws Throwable {
@@ -46,7 +50,7 @@ public class LogAspect {
         signature.getName();
         //AOP代理类的名字
         signature.getDeclaringTypeName();
-        String className = signature.getDeclaringTypeName().split("[.]")[signature.getDeclaringTypeName().split("[.]").length - 1];
+        String className = signature.getDeclaringTypeName().split("[.]")[signature.getDeclaringTypeName().split("[.]").length - NumConstant.ONE.intValue()];
         //AOP代理类的类（class）信息
         signature.getDeclaringType();
         //获取RequestAttributes
@@ -64,7 +68,7 @@ public class LogAspect {
         String method = request.getMethod();
         //如果要获取Session信息的话，可以这样写：
         //HttpSession session = (HttpSession) requestAttributes.resolveReference(RequestAttributes.REFERENCE_SESSION);
-        if ("get".equalsIgnoreCase(request.getMethod())) {
+        if (ReqMethodConstant.GET.equalsIgnoreCase(request.getMethod())) {
             Enumeration<String> enumeration = request.getParameterNames();
             MapUtils mapUtils = new MapUtils();
             while (enumeration.hasMoreElements()) {
@@ -72,11 +76,11 @@ public class LogAspect {
                 mapUtils.put(parameter, request.getParameter(parameter));
             }
             String str = JSON.toJSONString(mapUtils);
-            if (obj.length > 0) {
-                log.info(className + "|" + signature.getName() + "|GET|" + str);
+            if (obj.length > NumConstant.ZERO.intValue()) {
+                log.info(className + SymbolConstant.VERTICAL + signature.getName() + SymbolConstant.VERTICAL + ReqMethodConstant.UP_GET + SymbolConstant.VERTICAL + str);
             }
         }
-        if ("post".equalsIgnoreCase(request.getMethod())) {
+        if (ReqMethodConstant.POST.equalsIgnoreCase(request.getMethod())) {
             try {
                 BufferedReader br = request.getReader();
                 String str = null;
@@ -84,7 +88,7 @@ public class LogAspect {
                 while ((str = br.readLine()) != null) {
                     stringBuffer.append(str);
                 }
-                log.info(className + "|" + signature.getName() + "|POST|" + stringBuffer.toString());
+                log.info(className + SymbolConstant.VERTICAL + signature.getName() + SymbolConstant.VERTICAL + ReqMethodConstant.UP_POST + SymbolConstant.VERTICAL + stringBuffer.toString());
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -92,7 +96,7 @@ public class LogAspect {
         }
         Object result = joinPoint.proceed();
         if (ObjectUtil.isNotEmpty(result)) {
-            log.info(className + "|" + signature.getName() + "|" + method + "|" + result.toString());
+            log.info(className + SymbolConstant.VERTICAL + signature.getName() + SymbolConstant.VERTICAL + method + SymbolConstant.VERTICAL + result.toString());
         }
         return result;
     }

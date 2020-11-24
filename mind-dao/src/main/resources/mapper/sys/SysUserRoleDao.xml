@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mind.dao.sys.SysUserRoleDao">
+
+    <sql id="baseColumn">
+        id,
+        user_id,
+        role_id
+    </sql>
+
+    <resultMap id="baseResultMap" type="com.mind.model.sys.SysUserRoleModel">
+        <id property="id" column="id"/>
+        <result property="userId" column="user_id"/>
+        <result property="roleId" column="role_id"/>
+    </resultMap>
+
+    <sql id="selectiveWhere">
+        <where>
+            <if test="userId != null and userId != ''">
+                and user_id = #{userId}
+            </if>
+            <if test="roleId != null and roleId != ''">
+                and role_id = #{roleId}
+            </if>
+        </where>
+    </sql>
+
+    <!-- 获取列表 -->
+    <select id="queryList" resultMap="baseResultMap">
+        SELECT
+            <include refid="baseColumn"/>
+        FROM
+            sys_user_role
+        <include refid="selectiveWhere"/>
+    </select>
+
+    <!-- 批量插入 -->
+    <insert id="insertBatch" useGeneratedKeys="true" keyProperty="id">
+        insert into sys_user_role (user_id, role_id) values
+        <foreach collection="list" item="item" separator=",">
+            (#{item.userId}, #{item.roleId})
+        </foreach>
+    </insert>
+
+    <!--  根据用户id删除  -->
+    <update id="deleteByUserId">
+        delete from sys_user_role where user_id = #{userId}
+    </update>
+
+    <!--  根据角色id删除  -->
+    <update id="deleteByRoleId">
+        delete from sys_user_role where role_id = #{roleId}
+    </update>
+</mapper>

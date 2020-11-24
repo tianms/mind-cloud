@@ -1,6 +1,7 @@
 package com.mind.common.exception;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.mind.common.constatns.NumConstant;
 import com.mind.common.res.RestResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
@@ -87,12 +88,12 @@ public class ExceptionHandle {
                             "},errorMessage{" + fieldError.getDefaultMessage() + "}");
                     //msg.append(fieldError.getDefaultMessage()).append(";");
                 });
-                FieldError fieldError = (FieldError)errors.get(0);
+                FieldError fieldError = (FieldError) errors.get(NumConstant.ZERO.intValue());
                 msg.append(fieldError.getField()).append(fieldError.getDefaultMessage());
             }
             restResponse.setCode(String.valueOf(HttpStatus.BAD_REQUEST.value()));
             restResponse.setMessage(msg.toString());
-        }else if(ex instanceof BindException){
+        } else if (ex instanceof BindException) {
             BindException bindException = (BindException) ex;
             StringBuffer msg = new StringBuffer();
             BindingResult result = bindException.getBindingResult();
@@ -104,7 +105,7 @@ public class ExceptionHandle {
                             "},errorMessage{" + fieldError.getDefaultMessage() + "}");
                     //msg.append(fieldError.getField()).append(fieldError.getDefaultMessage()).append(";");
                 });
-                FieldError fieldError = (FieldError)errors.get(0);
+                FieldError fieldError = (FieldError) errors.get(NumConstant.ZERO.intValue());
                 msg.append(fieldError.getField()).append(fieldError.getDefaultMessage());
 
             }

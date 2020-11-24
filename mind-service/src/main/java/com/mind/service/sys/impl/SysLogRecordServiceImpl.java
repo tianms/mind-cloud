@@ -54,6 +54,7 @@ public class SysLogRecordServiceImpl implements SysLogRecordService {
      */
     @Override
     public Integer insert(SysLogRecordModel sysLogRecordModel) {
+        sysLogRecordModel.setCreateTime(new Date());
         return sysLogRecordDao.insert(sysLogRecordModel);
     }
 }

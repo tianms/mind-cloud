@@ -2,8 +2,6 @@ package com.mind.common.utils;
 
 import java.beans.PropertyDescriptor;
 import java.lang.reflect.Field;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * 查询条件帮助类

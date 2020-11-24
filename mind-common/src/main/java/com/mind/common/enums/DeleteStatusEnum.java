@@ -1,5 +1,7 @@
 package com.mind.common.enums;
 
+import com.mind.common.constatns.NumConstant;
+
 /**
  * @Auther: tianms
  * @Date: 2020/11/24 10:06
@@ -7,8 +9,8 @@ package com.mind.common.enums;
  */
 public enum DeleteStatusEnum {
 
-    DEL(0, "已删除"),
-    UN_DEL(1, "未删除");
+    DEL(NumConstant.ZERO.intValue(), "已删除"),
+    UN_DEL(NumConstant.ONE.intValue(), "未删除");
 
     private Integer code;
 

@@ -26,6 +26,9 @@
 
     <sql id="selectiveWhere">
         <where>
+            <if test="userName != null and userName != ''">
+                and user_name like concat('%', #{userName}, '%')
+            </if>
         </where>
     </sql>
 
@@ -48,7 +51,7 @@
     </select>
 
     <!-- 插入 -->
-    <insert id="insert">
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
         insert into sys_log_record
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="userName != null"> user_name, </if>
@@ -66,7 +69,7 @@
             <if test="params != null"> #{params}, </if>
             <if test="runTime != null"> #{runTime}, </if>
             <if test="ip != null"> #{ip}, </if>
-            <if test="createTime != null"> now(), </if>
+            <if test="createTime != null"> #{createTime}, </if>
         </trim>
     </insert>
 

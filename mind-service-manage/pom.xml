@@ -9,9 +9,16 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <!-- 接口管理端 -->
+    <!-- 接口管理端，调用基础service操作，处理复杂的逻辑，防止基础service之间依赖注入 -->
     <groupId>com.mind.service.manage</groupId>
     <artifactId>mind-service-manage</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.mind.service</groupId>
+            <artifactId>mind-service</artifactId>
+            <version>${parent.version}</version>
+        </dependency>
+    </dependencies>
 
 </project>

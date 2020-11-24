@@ -9,9 +9,10 @@ import java.util.HashMap;
  */
 public class MapUtils extends HashMap<String, Object> {
 
-    public MapUtils () {}
+    public MapUtils() {
+    }
 
-    public MapUtils (String key, Object value) {
+    public MapUtils(String key, Object value) {
         this.put(key, value);
     }
 

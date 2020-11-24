@@ -1,5 +1,7 @@
 package com.mind.common.utils;
 
+import com.mind.common.constatns.NumConstant;
+
 import java.util.Collection;
 import java.util.Map;
 
@@ -29,7 +31,7 @@ public class ObjectUtil {
             return true;
         }
 
-        for (int i = 0; i < objects.length; i++) {
+        for (int i = NumConstant.ZERO.intValue(); i < objects.length; i++) {
             if (isNull(objects[i])) {
                 return true;
             }
@@ -112,7 +114,7 @@ public class ObjectUtil {
             return true;
         }
 
-        for (int i = 0; i < objects.length; i++) {
+        for (int i = NumConstant.ZERO.intValue(); i < objects.length; i++) {
             if (isEmpty(objects[i])) {
                 return true;
             }
@@ -127,7 +129,7 @@ public class ObjectUtil {
      * @return boolean
      */
     public static <T> boolean isArrayEmpty(T[] ts) {
-        return isNull(ts) || ts.length == 0;
+        return isNull(ts) || ts.length == NumConstant.ZERO.intValue();
     }
 
     /**
@@ -136,8 +138,8 @@ public class ObjectUtil {
      * @param object 传入的对象可为String,List,Map,对象(必须实现toString方法)
      * @return
      */
-    public static String objectToString(Object object){
-        if(isEmpty(object)){
+    public static String objectToString(Object object) {
+        if (isEmpty(object)) {
             return null;
         }
         return object.toString();
@@ -149,19 +151,19 @@ public class ObjectUtil {
      * @param params
      * @return
      */
-    public static String pToString(Object ...params){
-        if(params==null){
+    public static String pToString(Object... params) {
+        if (params == null) {
             return null;
         }
         StringBuffer res = new StringBuffer();
-        for(int i=0;i<params.length;i++){
+        for (int i = NumConstant.ZERO.intValue(); i < params.length; i++) {
             String param = objectToString(params[i]);
-            if(ObjectUtil.isEmpty(param)){
+            if (ObjectUtil.isEmpty(param)) {
                 param = "-";
             }
-            if(i==params.length-1){
+            if (i == params.length - NumConstant.ONE.intValue()) {
                 res.append(param);
-            }else{
+            } else {
                 res.append(param).append("|");
             }
         }

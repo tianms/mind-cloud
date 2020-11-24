@@ -24,6 +24,11 @@ public class SysRoleRecordModel implements Serializable {
 	private String roleName;
 
 	/**
+	 * 是否删除，0：已删除，1：正常
+	 */
+	private Integer isDeleted;
+
+	/**
 	 * 备注
 	 */
 	private String remark;
@@ -37,5 +42,15 @@ public class SysRoleRecordModel implements Serializable {
 	 * 创建时间
 	 */
 	private Date createTime;
+
+	/**
+	 * 更新时间
+	 */
+	private Date updateTime;
+
+	/**
+	 * 删除时间
+	 */
+	private Date delTime;
 
 }

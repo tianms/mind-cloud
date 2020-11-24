@@ -17,7 +17,7 @@ import java.util.List;
 /**
  * @Auther: tianms
  * @Date: 2020/11/19 10:35
- * @Description:
+ * @Description: 日志操作控制层
  */
 @RestController
 @RequestMapping("/sys/log")
@@ -26,10 +26,18 @@ public class SysLogRecordController {
     @Autowired
     private SysLogRecordService sysLogRecordService;
 
+    /**
+     * 功能描述: 日志列表
+     *
+     * @param req
+     * @return com.mind.common.res.RestResponse
+     * @auther: tms
+     * @date: 2020/11/24 14:07
+     */
     @GetMapping("/queryList")
-    public RestResponse queryList (SysLogRecordReq sysLogRecordReq) {
-        PageHelper.startPage(1, 10);
-        List<SysLogRecordModel> sysLogRecordModels = sysLogRecordService.queryList(SearchUtil.getSearch(sysLogRecordReq));
+    public RestResponse queryList(SysLogRecordReq req) {
+        PageHelper.startPage(req.getPageNum(), req.getPageSize());
+        List<SysLogRecordModel> sysLogRecordModels = sysLogRecordService.queryList(SearchUtil.getSearch(req));
         PageInfo<SysLogRecordModel> pageInfo = new PageInfo<>(sysLogRecordModels);
         return RestResponse.success(pageInfo);
     }

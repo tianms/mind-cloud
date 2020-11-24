@@ -1,6 +1,8 @@
 package com.mind.common.annotation;
 
 import com.alibaba.fastjson.JSON;
+import com.mind.common.constatns.NumConstant;
+import com.mind.common.constatns.ReqMethodConstant;
 import com.mind.common.utils.MapUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -90,7 +92,7 @@ public class SysLogAspect {
         HttpServletRequest httpRequest = (HttpServletRequest) requestAttributes.resolveReference(RequestAttributes.REFERENCE_REQUEST);
         //如果要获取Session信息的话，可以这样写：
         //HttpSession session = (HttpSession) requestAttributes.resolveReference(RequestAttributes.REFERENCE_SESSION);
-        if ("get".equalsIgnoreCase(httpRequest.getMethod())) {
+        if (ReqMethodConstant.GET.equalsIgnoreCase(httpRequest.getMethod())) {
             Enumeration<String> enumeration = httpRequest.getParameterNames();
             MapUtils mapUtils = new MapUtils();
             while (enumeration.hasMoreElements()) {
@@ -98,11 +100,11 @@ public class SysLogAspect {
                 mapUtils.put(parameter, httpRequest.getParameter(parameter));
             }
             String str = JSON.toJSONString(mapUtils);
-            if (args.length > 0) {
+            if (args.length > NumConstant.ONE.intValue()) {
 //                sysLogRecordModel.setParams(str);
             }
         }
-        if ("post".equalsIgnoreCase(httpRequest.getMethod())) {
+        if (ReqMethodConstant.POST.equalsIgnoreCase(httpRequest.getMethod())) {
             try {
                 BufferedReader br = httpRequest.getReader();
                 String str = null;

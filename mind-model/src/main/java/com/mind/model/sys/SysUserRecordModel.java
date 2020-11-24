@@ -4,6 +4,7 @@ import lombok.Data;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 /**
  * 系统用户
@@ -11,66 +12,71 @@ import java.util.Date;
 @Data
 public class SysUserRecordModel implements Serializable {
 
-	private static final long serialVersionUID = 1L;
-	
-	/**
-	 * 用户ID
-	 */
-	private Integer id;
+    private static final long serialVersionUID = 1L;
 
-	/**
-	 * 用户名
-	 */
-	private String userName;
+    /**
+     * 用户ID
+     */
+    private Integer id;
 
-	/**
-	 * 密码
-	 */
-	private String passWord;
+    /**
+     * 用户名
+     */
+    private String userName;
 
-	/**
-	 * 盐
-	 */
-	private String salt;
+    /**
+     * 密码
+     */
+    private String passWord;
 
-	/**
-	 * 邮箱
-	 */
-	private String email;
+    /**
+     * 盐
+     */
+    private String salt;
 
-	/**
-	 * 手机号
-	 */
-	private String mobile;
+    /**
+     * 邮箱
+     */
+    private String email;
 
-	/**
-	 * 状态  0：禁用   1：正常
-	 */
-	private Integer status;
+    /**
+     * 手机号
+     */
+    private String mobile;
 
-	/**
-	 * 是否删除，0：已删除，1：正常
-	 */
-	private Integer isDelete;
+    /**
+     * 状态  0：禁用   1：正常
+     */
+    private Integer status;
 
-	/**
-	 * 创建者ID
-	 */
-	private Integer createUserId;
+    /**
+     * 是否删除，0：已删除，1：正常
+     */
+    private Integer isDeleted;
 
-	/**
-	 * 创建时间
-	 */
-	private Date createTime;
+    /**
+     * 创建者ID
+     */
+    private Integer createUserId;
 
-	/**
-	 * 更新时间
-	 */
-	private Date updateTime;
+    /**
+     * 创建时间
+     */
+    private Date createTime;
 
-	/**
-	 * 删除时间
-	 */
-	private Date delTime;
+    /**
+     * 更新时间
+     */
+    private Date updateTime;
+
+    /**
+     * 删除时间
+     */
+    private Date delTime;
+
+    /**
+     * 用户关联的角色列表
+     */
+    private List<Integer> roleIdList;
 
 }

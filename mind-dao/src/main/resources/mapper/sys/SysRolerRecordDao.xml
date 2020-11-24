@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mind.dao.sys.SysRoleRecordDao">
+
+    <sql id="baseColumn">
+        id,
+        role_name,
+        is_deleted,
+        remark,
+        create_user_id,
+        create_time,
+        update_time,
+        del_time
+    </sql>
+
+    <resultMap id="baseResultMap" type="com.mind.model.sys.SysRoleRecordModel">
+        <id property="id" column="id"/>
+        <result property="roleName" column="role_name"/>
+        <result property="isDeleted" column="is_deleted"/>
+        <result property="remark" column="remark"/>
+        <result property="createUserId" column="create_user_id"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="delTime" column="del_time"/>
+    </resultMap>
+
+    <sql id="selectiveWhere">
+        <where>
+            <if test="roleName != null and roleName != ''">
+                and role_name like concat('%', #{roleName}, '%')
+            </if>
+        </where>
+    </sql>
+
+    <!-- 根据id获取 -->
+    <select id="getById" resultMap="baseResultMap">
+        SELECT
+            <include refid="baseColumn"/>
+        FROM
+            sys_role_record
+        where id = #{id}
+    </select>
+
+    <!-- 获取列表 -->
+    <select id="queryList" resultMap="baseResultMap">
+        SELECT
+            <include refid="baseColumn"/>
+        FROM
+            sys_role_record
+        <include refid="selectiveWhere"/>
+    </select>
+
+    <!-- 插入 -->
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+        insert into sys_role_record
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="roleName != null"> role_name, </if>
+            <if test="isDeleted != null"> is_deleted, </if>
+            <if test="remark != null"> remark, </if>
+            <if test="createUserId != null"> create_user_id, </if>
+            <if test="createTime != null"> create_time, </if>
+            <if test="updateTime != null"> update_time, </if>
+            <if test="delTime != null"> del_time, </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="roleName != null"> #{roleName}, </if>
+            <if test="isDeleted != null"> #{isDeleted}, </if>
+            <if test="remark != null"> #{remark}, </if>
+            <if test="createUserId != null"> #{createUserId}, </if>
+            <if test="createTime != null"> #{createTime}, </if>
+            <if test="updateTime != null"> #{updateTime}, </if>
+            <if test="delTime != null"> #{delTime}, </if>
+        </trim>
+    </insert>
+
+    <!-- 更新 -->
+    <update id="update">
+        update sys_role_record
+        <set>
+            <if test="roleName != null"> roleName = #{roleName}, </if>
+            <if test="isDeleted != null"> isDeleted = #{isDeleted}, </if>
+            <if test="remark != null"> remark = #{remark}, </if>
+            <if test="createUserId != null"> createUserId = #{createUserId}, </if>
+            <if test="createTime != null"> createTime = #{createTime}, </if>
+            <if test="updateTime != null"> updateTime = #{updateTime}, </if>
+            <if test="delTime != null"> delTime = #{delTime}, </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--  更新状态为删除状态  -->
+    <update id="deleteById" >
+        update sys_role_record set is_deleted = #{isDeleted}, delTime = now() where id = #{id}
+    </update>
+</mapper>
