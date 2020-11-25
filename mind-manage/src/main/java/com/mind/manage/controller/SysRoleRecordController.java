@@ -80,7 +80,7 @@ public class SysRoleRecordController {
      * @auther: tms
      * @date: 2020/11/24 14:14
      */
-    @PostMapping("/delete")
+    @GetMapping("/delete")
     public RestResponse delete(@RequestParam("id") Integer id) {
         sysRoleRecordService.deleteById(id);
         return RestResponse.success("删除成功");
