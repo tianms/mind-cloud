@@ -2,6 +2,7 @@ server:
   port: 7001
 
 spring:
+  # 数据库配置
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     driverClassName: com.mysql.jdbc.Driver
@@ -30,13 +31,26 @@ spring:
     testOnBorrow: false
     #指明是否在归还到池中前进行检验
     testOnReturn: false
+  # redis配置
+  redis:
+    timeout: 60000
+    pool:
+      max-active: 300
+      max-wait: -1
+      max-idle: 100
+      min-idle: 20
+    cluster:
+      nodes: 192.169.11.11:7001,192.169.11.11:7002,192.169.11.11:7003
 
+# mybatis-plus插件配置
 mybatis-plus:
   mapper-locations: classpath:mapper/**/*.xml
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+# 分页插件
 pagehelper:
   reasonable: true
   support-methods-arguments: true
   params: count=countSql
   page-size-zero: true
+
