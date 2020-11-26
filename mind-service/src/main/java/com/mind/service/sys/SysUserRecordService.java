@@ -70,6 +70,25 @@ public interface SysUserRecordService {
      * @auther: tms
      * @date: 2020/11/24 16:32
      */
-    public Integer totalByUserName(String userName);
+    Integer totalByUserName(String userName);
+
+    /**
+     * 功能描述: 根据条件获取用户信息(完全匹配)
+     * @param mapUtils
+     * @auther: tms
+     * @date: 2020/11/26 16:19
+     * @return com.mind.model.sys.SysUserRecordModel
+    */
+    SysUserRecordModel getByParam(MapUtils mapUtils);
+
+    /**
+     * 功能描述: 根据用户名查询用户信息
+     *
+     * @param userName
+     * @return com.mind.model.sys.SysUserRecordModel
+     * @auther: tms
+     * @date: 2020/11/26 16:18
+     */
+    SysUserRecordModel getByUserName(String userName);
 
 }

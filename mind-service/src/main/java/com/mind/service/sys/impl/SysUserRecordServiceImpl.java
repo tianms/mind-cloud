@@ -110,4 +110,30 @@ public class SysUserRecordServiceImpl implements SysUserRecordService {
             return sysUserRecordModelList.size();
         }
     }
+
+    /**
+     * 功能描述: 根据条件获取用户信息(完全匹配)
+     *
+     * @param mapUtils
+     * @return com.mind.model.sys.SysUserRecordModel
+     * @auther: tms
+     * @date: 2020/11/26 16:19
+     */
+    @Override
+    public SysUserRecordModel getByParam(MapUtils mapUtils) {
+        return sysUserRecordDao.getByParam(mapUtils);
+    }
+
+    /**
+     * 功能描述: 根据用户名查询用户信息
+     *
+     * @param userName
+     * @return com.mind.model.sys.SysUserRecordModel
+     * @auther: tms
+     * @date: 2020/11/26 16:18
+     */
+    @Override
+    public SysUserRecordModel getByUserName(String userName) {
+        return this.getByParam(new MapUtils().put(ColumnConstant.EQ_USER_NAME, userName));
+    }
 }

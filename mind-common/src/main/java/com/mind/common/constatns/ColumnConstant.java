@@ -15,4 +15,13 @@ public class ColumnConstant {
 
     // 相等用户名
     public static final String EQ_USER_NAME = "eqUserName";
+
+    // token
+    public static final String TOKEN = "token";
+
+    // authKey
+    public static final String AUTH_KEY = "authKey";
+
+    // sessionId
+    public static final String SESSION_ID = "sessionId";
 }

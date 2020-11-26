@@ -61,6 +61,15 @@
         <include refid="selectiveWhere"/>
     </select>
 
+    <!-- 根据条件获取详情 -->
+    <select id="getByParam" resultMap="baseResultMap">
+        SELECT
+            <include refid="baseColumn"/>
+        FROM
+            sys_user_record
+        <include refid="selectiveWhere"/>
+    </select>
+
     <!-- 插入 -->
     <insert id="insert" useGeneratedKeys="true" keyProperty="id">
         insert into sys_user_record
