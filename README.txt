@@ -26,3 +26,10 @@ mind-model -> mind-dao -> mind-service -> mind-service-manage -> mind-manage/min
 更新：update开头，updateXXX
 删除：delete开头，deleteXXX
 复杂操作：go开头，goXXX
+
+缓存：
+Redis和EhCache缓存，还有新的再添加
+Redis需要配置服务器地址，才可以使用，包括并且不仅限于String的数据操作
+EhCache不需要配置服务器地址，可以直接使用，仅限于String数据的操作
+默认使用EhCache缓存，通过配置文件中cacheConfig.EnableRedis控制是否使用Redis缓存，值为true使用Redis缓存修改redis.nodes服务器地址
+后期配置性内容可以入数据库，通过数据库来控制

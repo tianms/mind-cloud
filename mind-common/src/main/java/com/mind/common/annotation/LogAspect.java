@@ -1,9 +1,9 @@
 package com.mind.common.annotation;
 
 import com.alibaba.fastjson.JSON;
+import com.mind.common.constatns.BaseConstants;
 import com.mind.common.constatns.NumConstant;
 import com.mind.common.constatns.ReqMethodConstant;
-import com.mind.common.constatns.SymbolConstant;
 import com.mind.common.utils.MapUtils;
 import com.mind.common.utils.ObjectUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -77,7 +77,7 @@ public class LogAspect {
             }
             String str = JSON.toJSONString(mapUtils);
             if (obj.length > NumConstant.ZERO.intValue()) {
-                log.info(className + SymbolConstant.VERTICAL + signature.getName() + SymbolConstant.VERTICAL + ReqMethodConstant.UP_GET + SymbolConstant.VERTICAL + str);
+                log.info(className + BaseConstants.SymbolConstant.VERTICAL + signature.getName() + BaseConstants.SymbolConstant.VERTICAL + ReqMethodConstant.UP_GET + BaseConstants.SymbolConstant.VERTICAL + str);
             }
         }
         if (ReqMethodConstant.POST.equalsIgnoreCase(request.getMethod())) {
@@ -88,7 +88,7 @@ public class LogAspect {
                 while ((str = br.readLine()) != null) {
                     stringBuffer.append(str);
                 }
-                log.info(className + SymbolConstant.VERTICAL + signature.getName() + SymbolConstant.VERTICAL + ReqMethodConstant.UP_POST + SymbolConstant.VERTICAL + stringBuffer.toString());
+                log.info(className + BaseConstants.SymbolConstant.VERTICAL + signature.getName() + BaseConstants.SymbolConstant.VERTICAL + ReqMethodConstant.UP_POST + BaseConstants.SymbolConstant.VERTICAL + stringBuffer.toString());
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -96,7 +96,7 @@ public class LogAspect {
         }
         Object result = joinPoint.proceed();
         if (ObjectUtil.isNotEmpty(result)) {
-            log.info(className + SymbolConstant.VERTICAL + signature.getName() + SymbolConstant.VERTICAL + method + SymbolConstant.VERTICAL + result.toString());
+            log.info(className + BaseConstants.SymbolConstant.VERTICAL + signature.getName() + BaseConstants.SymbolConstant.VERTICAL + method + BaseConstants.SymbolConstant.VERTICAL + result.toString());
         }
         return result;
     }

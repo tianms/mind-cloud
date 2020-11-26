@@ -54,3 +54,7 @@ pagehelper:
   params: count=countSql
   page-size-zero: true
 
+# 缓存配置
+cacheConfig:
+  # 启动redis,启用true，缓存使用redis，但需要配置redis相关地址，如果不使用默认使用ehcache缓存
+  enableRedis: false

@@ -1,7 +1,7 @@
 package com.mind.common.res;
 
 import com.alibaba.fastjson.JSONObject;
-import com.mind.common.constatns.OkErrorConstant;
+import com.mind.common.constatns.BaseConstants;
 import com.mind.common.exception.ErrorResult;
 import lombok.Data;
 import lombok.ToString;
@@ -135,7 +135,7 @@ public class RestResponse<T> implements Serializable {
      */
     public static RestResponse success() {
         RestResponse<String> restResponse = new RestResponse<>();
-        restResponse.setMessage(OkErrorConstant.SUCCESS);
+        restResponse.setMessage(BaseConstants.OkOrErrorConstant.SUCCESS);
         return restResponse;
     }
 

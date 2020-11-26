@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Collection;
 import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -90,9 +91,8 @@ public class RedisService {
         String value = redisTemplate.opsForValue().get(key);
         if (StringUtils.isBlank(value)) {
             return false;
-        } else {
-            return true;
         }
+        return true;
     }
 
     /**
@@ -250,7 +250,7 @@ public class RedisService {
      * @auther: tms
      * @date: 2020/11/25 16:02
      */
-    public void delete(String hKey, String key) {
+    public void hDel(String hKey, String key) {
         redisTemplate.opsForHash().delete(hKey, hKey);
     }
 
@@ -261,9 +261,22 @@ public class RedisService {
      * @auther: tms
      * @date: 2020/11/25 16:02
      */
-    public void deleteKeys(String hKey, String... key) {
+    public void hDelKeys(String hKey, String... key) {
         redisTemplate.opsForHash().delete(hKey, key);
     }
 
     /*********************************** hKey key value hash ***************************************/
+
+    /**
+     * 功能描述: 获取指定前缀所有的key，如果查询全部传入“*”
+     *
+     * @param pattern
+     * @return java.util.Set<java.lang.String>
+     * @auther: tms
+     * @date: 2020/11/26 10:55
+     */
+    public Set<String> getKeys(String pattern) {
+        Set<String> keys = redisTemplate.keys(pattern);
+        return keys;
+    }
 }

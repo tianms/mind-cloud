@@ -8,6 +8,6 @@ package com.mind.common.constatns;
 public class CachePrefixConstant {
 
     // ehcache缓存名称
-    public static final String CACHE_KEY = "cache";
+    public static final String CACHE_KEY = "myCache";
 
 }
